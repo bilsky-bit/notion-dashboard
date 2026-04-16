@@ -110,12 +110,12 @@ const CK={pessoal:'Categoria',profissional:'Área',mensal:'Área'};
 let data={},tab='pessoal',fil={pessoal:'pendentes',profissional:'pendentes',mensal:'pendentes',livros:'todos'};
 
 async function nQ(dbId,body={}){
-  const r=await fetch(`/api/databases/${dbId}/query`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+  const r=await fetch(`/api/notion?path=databases/${dbId}/query`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
   if(!r.ok)throw new Error(await r.text());
   return r.json();
 }
 async function nP(pageId,properties){
-  const r=await fetch(`/api/pages/${pageId}`,{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({properties})});
+  const r=await fetch(`/api/notion?path=pages/${pageId}`,{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({properties})});
   if(!r.ok)throw new Error(await r.text());
   return r.json();
 }
